@@ -38,23 +38,30 @@ router_productos.get('/:id', (req, res, next) => {
 
 router_productos.post('/', (req, res, next) => {
     let producto = req.query;
+    console.log(req)
+    console.log(req.body);
+    console.log(req.query);
+    console.log(req.params);
 
     if(!producto.hasOwnProperty('title')
     || !producto.hasOwnProperty('price')
     || !producto.hasOwnProperty('thumbnail')){
+        res.status(404)
         res.json({error : "Faltan ingresar parametros"});
-    }
-
-    let id = productos.save({
-        title : producto.title,
-        price : producto.price,
-        thumbnail: producto.thumbnail
-    });
-
-    if(id){
-        res.json((req.query));
     } else {
-        res.json({error : "An error has ocurred while saving a new product"});
+        let id = productos.save({
+            title : producto.title,
+            price : producto.price,
+            thumbnail: producto.thumbnail
+        });
+    
+        if(id){
+            res.status(200);
+            res.json((req.query));
+        } else {
+            res.status(404);
+            res.json({error : "An error has ocurred while saving a new product"});
+        }
     }
     
 }); 

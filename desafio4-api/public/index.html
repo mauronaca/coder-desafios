@@ -1,12 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 </head>
+
 <body>
-    Hola Mundo
+    <div style="display: block;">
+        <form id="save" action="http://localhost:8080/api/productos/" method="POST">
+            <div>
+                <label>Titulo</label>
+                <input name="titulo" id="titulo" value="remera">
+            </div>
+            <div>
+                <label for="to">Precio</label>
+                <input name="price" id="price" value="1000">
+            </div>
+            <div>
+                <label for="to">Thumbnail</label>
+                <input name="thumbnail" id="thumbnail" value="foto">
+            </div>
+            <div>
+                <button>Send my greetings</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        $("#save").submit(function (event) {
+            // Stop form from submitting normally
+            //event.preventDefault();
+
+            // Get some values from elements on the page:
+            var $form = $(this),
+                param1 = $form.find("input[name='titulo']").val(),
+                param2 = $form.find("input[name='price']").val(),
+                param3 = $form.find("input[name='thumbnail']").val(),
+                url = $form.attr("action");
+
+            let data = {
+                title: param1,
+                price: param2,
+                thumbnail: param3
+            };
+
+            console.log(url);
+
+            var settings = {
+                url: url + $.param(data),
+                type: "POST",
+                ContentType: "application/json",
+                data: {'data' : JSON.stringify(data)}
+            };
+            console.log(url+$.param(data))
+            $.ajax(settings)
+                .done(function (response) {
+                console.log(response);
+            });
+            
+        });
+    </script>
+
 </body>
+
 </html>

@@ -1,4 +1,3 @@
-const { threadId } = require("worker_threads");
 
 module.exports = class Productos{
     constructor(){
