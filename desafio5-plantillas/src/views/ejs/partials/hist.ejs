@@ -1,0 +1,37 @@
+<div class="d-flex align-items-center flex-column">
+    <h2 style="color:red; margin-top: 20px;">Lista de productos</h2>
+
+    <% if(productos.length> 0) { %>
+        <table class="table 
+        d-flex justify-content-center flex-column 
+        table-dark table-hover 
+        col-md-4 col-md-offset-4">
+            <tr>
+                <div class = "text-center">    
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Imagen</th>
+                </div>
+            </tr>
+
+            <%for(producto of productos) {%>
+                <tr>
+                    <td>
+                        <%= producto.title %>
+                    </td>
+                    <td>
+                        <%= producto.price %>
+                    </td>
+                    <td>
+                        <div class = "text-center">
+                            <img style="width: 50%; height: 50%;" src= "<%= producto.thumbnail %>" class="img-thumbnail" alt="Responsive image">
+                        </div>
+                    </td>
+                </tr>
+                <% } %>
+
+        </table>
+        <%} else {%>
+            <p> No se ha encontrado informacion.</p>
+        <% } %>
+</div>
