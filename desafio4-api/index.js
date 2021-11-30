@@ -20,8 +20,15 @@ app.use('/', (req, res, next) => {
     res.redirect('/api/productos');
 });
 
-app.use(express.json());
-app.use(urlencoded({extended : true}));
+router_productos.use(express.json());
+router_productos.use(urlencoded({extended : true}));
+
+app.set('views', path.join(__dirname, 'views', 'ejs'));
+app.set('view engine', 'ejs');
+
+router_productos.get('/ingresar', (req, res) => {
+    res.render('form');
+});
 
 router_productos.get('/', (req, res, next) => {
     res.json(productos.getAll());
@@ -37,11 +44,8 @@ router_productos.get('/:id', (req, res, next) => {
 });
 
 router_productos.post('/', (req, res, next) => {
-    let producto = req.query;
-    console.log(req)
-    console.log(req.body);
-    console.log(req.query);
-    console.log(req.params);
+    let producto = (Object.keys(req.query).length === 0) ? req.body : req.query;
+    console.log(producto);
 
     if(!producto.hasOwnProperty('title')
     || !producto.hasOwnProperty('price')
@@ -57,7 +61,7 @@ router_productos.post('/', (req, res, next) => {
     
         if(id){
             res.status(200);
-            res.json((req.query));
+            res.redirect('/');
         } else {
             res.status(404);
             res.json({error : "An error has ocurred while saving a new product"});
