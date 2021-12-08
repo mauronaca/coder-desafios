@@ -12,7 +12,7 @@ class Socket{
 
         this.io = new SocketIO(http);
         this.productos = new Productos(); // La instancia de conexion del socket contiene los productos.
-        
+
         this.usuarios = []; 
         this.mensajes = [];
     }
@@ -22,7 +22,9 @@ class Socket{
         try{
             this.io.on('connection', socket => {
                 console.log(`Usuario ${socket.id} conectado...`);
+
                 
+
                 socket.on('producto', data => {
                     // Conexion 1:1
                     socket.emit('listenserver', this.productos.getAll());
@@ -33,6 +35,28 @@ class Socket{
                     this.productos.save(data);
                     console.log(this.productos.getAll());
                     this.io.sockets.emit('listenserver', this.productos.getAll());
+                });
+
+                // Evento cuando se logea un usueario nuevo
+                socket.on('new_user', data => {
+                    console.log(`Se ha conectado al chat el ususario con mail: ${data.email}`);
+                    socket.emit('listen_mensajes', this.mensajes);
+                });
+
+                socket.on('mensaje', data => {
+                    let date = new Date();
+                    let hora = `${date.getDate()}:${date.getMonth()}:${date.getFullYear()} 
+                                ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+                    
+                    let msg = {
+                        hora : hora,
+                        mail : data.mail,
+                        mensaje : data.mensaje 
+                    };
+
+                    this.mensajes.push(msg);
+                    console.log(msg);
+                    this.io.sockets.emit('listenserver-mensajes', this.mensajes);
                 });
 
             });

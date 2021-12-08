@@ -13,6 +13,17 @@
     <script src ="../../../../socket.io/socket.io.js" ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://unpkg.com/ejs@3.1.6/ejs.min.js"></script>
-
+    <link rel="stylesheet" href="../styles/style.css">
+    <style>
+        #container-chat.active>div:last-of-type, #container-chat>div:first-of-type {
+            display: block;
+        }
+        #container-chat.active>div:first-of-type, #container-chat>div:last-of-type {
+            display: none;
+        }
+        body {
+            background-color: rgb(199, 196, 196);
+        }
+    </style>
 </head>
 <body>

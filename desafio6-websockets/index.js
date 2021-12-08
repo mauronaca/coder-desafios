@@ -32,22 +32,5 @@ app.set('view engine', 'ejs');
 
 
 router_product.get('/', (req, res, next) => {
-    res.render('./pages/index', {productos : productos.getAll()});
+    res.render('./pages/index');
 });
-
-// Esta ruta queda en desuso
-let productos = new Productos();
-router_product.post('/add', (req, res, next) => {
-    let producto = (Object.keys(req.query).length === 0) ? req.body : req.query;
-
-    if (!productos.save(producto)) {
-        res.json({error : "An error has ocurred while saving a new product"});
-    } else {
-        res.status(200);
-        res.redirect('/');
-    }
-});
-
-//Pasar las rutas al directorio routes
-
-
