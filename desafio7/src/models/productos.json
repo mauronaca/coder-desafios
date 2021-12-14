@@ -1,210 +1,32 @@
 [
    {
-      "title": "Remera S",
-      "id": 1
+      "nombre": "RemeraS",
+      "descripcion": "Remera de algodon XXL",
+      "codigo": 21312421,
+      "foto": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
+      "precio": 2100,
+      "stock": "91",
+      "id": 1,
+      "timestamp": "2021-12-14T22:26:50.171Z"
    },
    {
-      "title": "Remera XXL",
-      "price": "2311",
-      "thumbnail": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "id": 2
+      "nombre": "Remera XXL",
+      "descripcion": "Remera de algodon XXL",
+      "codigo": 21312421,
+      "foto": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
+      "precio": 2100,
+      "stock": 98,
+      "id": 2,
+      "timestamp": "2021-12-14T22:26:58.234Z"
    },
    {
-      "title": "Remera XXL",
-      "price": "2311",
-      "thumbnail": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "id": 3
-   },
-   {
-      "title": "Remera XXL",
-      "price": "2311",
-      "thumbnail": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "id": 4
-   },
-   {
-      "title": "Remera XXL",
-      "price": "2311",
-      "thumbnail": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "id": 5
-   },
-   {
-      "title": "Remera XXL",
-      "price": "2311",
-      "thumbnail": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "id": 6
-   },
-   {
-      "title": "Remera XXL",
-      "price": "2311",
-      "thumbnail": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "id": 7
-   },
-   {
-      "title": "Remera XXL",
-      "price": "2311",
-      "thumbnail": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "id": 8
-   },
-   {
-      "title": "Remera XXL",
-      "price": "2311",
-      "thumbnail": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "id": 9
-   },
-   {
-      "title": "Remera XXL",
-      "price": "2311",
-      "thumbnail": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "id": 10
-   },
-   {
-      "title": "Remera XXL",
-      "price": "2311",
-      "thumbnail": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "id": 11
-   },
-   {
-      "title": "Remera XXL",
-      "price": "2311",
-      "thumbnail": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "id": 12
-   },
-   {
-      "title": "Remera XXL",
-      "price": "2311",
-      "thumbnail": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "id": 13
-   },
-   {
-      "title": "Remera XXL",
-      "price": "2311",
-      "thumbnail": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "id": 14
-   },
-   {
-      "title": "Remera XXL",
-      "price": "2311",
-      "thumbnail": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "id": 15
-   },
-   {
-      "title": "Remera XXL",
-      "price": "2311",
-      "thumbnail": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "id": 16
-   },
-   {
-      "title": "Remera XXL",
-      "price": "2311",
-      "thumbnail": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "id": 17
-   },
-   {
-      "title": "Remera XXL",
-      "price": "2311",
-      "thumbnail": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "id": 18
-   },
-   {
-      "title": "Remera XXL",
-      "price": "2311",
-      "thumbnail": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "id": 19
-   },
-   {
-      "title": "Remera XXL",
-      "price": "2311",
-      "thumbnail": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "id": 20
-   },
-   {
-      "title": "Remera XXL",
-      "price": "2311",
-      "thumbnail": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "id": 21
-   },
-   {
-      "title": "Remera XXL",
-      "price": "2311",
-      "thumbnail": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "id": 22
-   },
-   {
-      "title": "Remera XXL",
-      "price": "2311",
-      "thumbnail": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "id": 23
-   },
-   {
-      "title": "Remera XXL",
-      "price": "2311",
-      "thumbnail": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "id": 24
-   },
-   {
-      "title": "Remera XXL",
-      "price": "2311",
-      "thumbnail": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "id": 25
-   },
-   {
-      "title": "Remera XXL",
-      "price": "2311",
-      "thumbnail": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "id": 26
-   },
-   {
-      "title": "Remera XXL",
-      "price": "2311",
-      "thumbnail": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "id": 27
-   },
-   {
-      "title": "Remera XXL",
-      "price": "2311",
-      "thumbnail": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "id": 28
-   },
-   {
-      "title": "Remera XXL",
-      "price": "2311",
-      "thumbnail": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "id": 29
-   },
-   {
-      "title": "Remera XXL",
-      "price": "2311",
-      "thumbnail": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "id": 30
-   },
-   {
-      "title": "Remera XXL",
-      "price": "2311",
-      "thumbnail": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "id": 31
-   },
-   {
-      "title": "Remera XXL",
-      "price": "2311",
-      "thumbnail": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "id": 32
-   },
-   {
-      "title": "Remera XXL",
-      "price": "2311",
-      "thumbnail": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "id": 33
-   },
-   {
-      "title": "Remera XXL",
-      "price": "2311",
-      "thumbnail": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "id": 34
-   },
-   {
-      "title": "Remera XXL",
-      "price": "2311",
-      "thumbnail": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "id": 35
+      "nombre": "Remera XXL",
+      "descripcion": "Remera de algodon XXL",
+      "codigo": 21312421,
+      "foto": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
+      "precio": 2100,
+      "stock": 98,
+      "id": 3,
+      "timestamp": "2021-12-14T22:37:05.490Z"
    }
 ]

@@ -8,7 +8,7 @@ require('dotenv').config()
 const PORT = process.env.PORT || 3000;
 
 let app = express();
-global.admin = false;
+global.admin = true;
 
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}\nhttp://localhost:${PORT}`);
@@ -20,6 +20,9 @@ app.set('view engine', 'ejs');
 
 app.use('/api/productos', router_productos);
 app.use('/api/carrito' , router_carrito);
+app.use((req, res, next) => {
+    res.json({error : -2, descripcion: `ruta ${req.path} no valida`});
+})
 
 app.post('/api/login', (req, res, next) => {
     let user = req.query.user;

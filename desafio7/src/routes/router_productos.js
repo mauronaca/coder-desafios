@@ -4,7 +4,7 @@ let path = require('path');
 const { urlencoded } = require('express');
 let Contenedor = require('../utils/Contenedor.js');
 
-let contenedor = new Contenedor(path.join('src', 'models', 'productos.json'));
+let productos = new Contenedor(path.join('src', 'models', 'productos.json'));
 
 let router_productos = new Router;
 
@@ -24,12 +24,12 @@ router_productos.use((req, res, next) => {
 });
 
 router_productos.get('/', async (req, res, next) => {
-    let response = null;
+    let response = {};
 
     try{
-        response = await contenedor.getAll();
+        response = await productos.getAll();
     } catch(error) {
-        response = error;
+        response = {error : error};
     }
     res.json(response);
 });
@@ -38,18 +38,13 @@ router_productos.get('/:id', async (req, res, next) => {
     let response = {};
     let itemID = req.params.id;
 
+
     try{
-        let item = await contenedor.getById(itemID);
-            
-        if(item){
-            response = item;
-            
-        } else {
-            response = {error : "Invalid ID"};
-            
-        }
+        let item = await productos.getById(itemID);
+        response = item;
+   
     } catch(error){
-        response = {error : "Error"};
+        response = {error : error};
     }
 
     res.json(response);
@@ -63,22 +58,21 @@ router_productos.post('/', async (req, res, next) => {
 
     console.log(producto);
 
-    if(!producto.hasOwnProperty('title')
-    || !producto.hasOwnProperty('price')
-    || !producto.hasOwnProperty('thumbnail')){
+    if(!producto.hasOwnProperty('nombre')
+    || !producto.hasOwnProperty('descripcion')
+    || !producto.hasOwnProperty('codigo')
+    || !producto.hasOwnProperty('foto')
+    || !producto.hasOwnProperty('precio')
+    || !producto.hasOwnProperty('stock')
+    ){
         response = {error : "Faltan ingresar parametros"};
 
     } else {
 
-        let item2bsaved = {
-            title : producto.title,
-            price : producto.price,
-            thumbnail: producto.thumbnail
-        };
 
         try{
-            let save_resp = await contenedor.save(item2bsaved);
-            response = await contenedor.getAll();
+            let save_resp = await productos.save(producto);
+            response = await productos.getAll();
             //console.log(save_resp)
         } catch(error) {
             response = {error : "An error has ocurred while saving a new product"};
@@ -92,16 +86,16 @@ router_productos.post('/', async (req, res, next) => {
 router_productos.put('/:id', async (req, res, next) => {
     let newProduct = (Object.keys(req.query).length === 0) ? req.body : req.query;
     let id = req.params.id;
-    
+
     let response = {}
     
     try {
-        await contenedor.update(id, newProduct);
+        await productos.update(id, newProduct);
 
         response = {
             id : id,
             'new-product' : newProduct,
-            'updated-product' : await contenedor.getById(id)
+            'updated-product' : await productos.getById(id)
         };
 
     } catch(error) {
@@ -116,12 +110,9 @@ router_productos.delete('/:id', async (req, res, next) => {
     let response = {};
     
     try{
-        let delete_resp = await contenedor.deleteById(id);
-        if(delete_resp){
-            response = await contenedor.getAll();
-        } else {
-            response = {error: "Invalid ID"}
-        }
+        let delete_resp = await productos.deleteById(id);
+        response = await productos.getAll();
+        
     } catch(error) { 
         response = {error : error};
     }

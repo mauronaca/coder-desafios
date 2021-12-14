@@ -1,4 +1,6 @@
 const fs = require('fs');
+
+
 module.exports = class Contenedor{
     constructor(path = './productos.txt'){
         this.name = path;
@@ -35,6 +37,7 @@ module.exports = class Contenedor{
     async save(producto){
         this.id++;
         producto.id = this.id;
+        producto.timestamp = new Date().toISOString();
 
         try {
             let content = await fs.promises.readFile(this.name, 'utf-8');
@@ -63,9 +66,11 @@ module.exports = class Contenedor{
 
             content.map((producto, idx) => {
                 if(producto.id == id){
-                    producto.title = newProduct.title;
-                    producto.price = newProduct.price;
-                    producto.thumbnail = newProduct.thumbnail;
+                    Object.keys(newProduct).forEach(key => {
+                        if(key in producto){
+                            producto[key] = newProduct[key];
+                        }
+                    });
                 }
             }, content);
 
@@ -80,7 +85,7 @@ module.exports = class Contenedor{
     async getById(id){
 
         if(id > this.id || id <= 0){
-            return 0;
+            throw(`The requested id = ${id} is not valid`);
         }
 
         try{
@@ -106,8 +111,8 @@ module.exports = class Contenedor{
 
     async deleteById(id){
         if(id > this.id || id <= 0){
-            //throw(`The requested id = ${id} is not valid`);
-            return 0;
+            throw(`The requested id = ${id} is not valid`);
+            //return 0;
         }
 
         try {
