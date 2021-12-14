@@ -2,16 +2,26 @@ let express = require('express');
 let { Router } = express;
 let path = require('path');
 const { urlencoded } = require('express');
-let Productos = require('../utils/Productos.js');
 let Contenedor = require('../utils/Contenedor.js');
 
-let productos = new Productos();
 let contenedor = new Contenedor(path.join('src', 'models', 'productos.json'));
 
 let router_productos = new Router;
 
 router_productos.use(express.json());
 router_productos.use(urlencoded({extended : true}));
+
+router_productos.use((req, res, next) => {
+    if(req.method == "GET"){
+        next();
+    } else{
+        if(global.admin){
+            next();
+        } else {
+            res.json({error : -1, description: `ruta ${req.originalUrl} ${req.method} no autorizada`});
+        }
+    }
+});
 
 router_productos.get('/', async (req, res, next) => {
     let response = null;
@@ -79,22 +89,26 @@ router_productos.post('/', async (req, res, next) => {
     res.json(response);
 }); 
 
-router_productos.put('/:id', (req, res, next) => {
-    let newProduct = req.query;
+router_productos.put('/:id', async (req, res, next) => {
+    let newProduct = (Object.keys(req.query).length === 0) ? req.body : req.query;
     let id = req.params.id;
     
-    let response = {
-        id : id,
-        'new-product' : newProduct,
-        'updated-product' : productos.getId(id)
+    let response = {}
+    
+    try {
+        await contenedor.update(id, newProduct);
+
+        response = {
+            id : id,
+            'new-product' : newProduct,
+            'updated-product' : await contenedor.getById(id)
+        };
+
+    } catch(error) {
+        response = {error : error};
     }
 
-    let aux = productos.update(id, newProduct);
-    if(!aux){
-        res.json({error : "An error has ocurred while updating"});
-    } else {
-        res.json(response);
-    }
+    res.json(response);
 });
 
 router_productos.delete('/:id', async (req, res, next) => {
@@ -102,7 +116,7 @@ router_productos.delete('/:id', async (req, res, next) => {
     let response = {};
     
     try{
-        let delete_resp = await contenedor.delete(id);
+        let delete_resp = await contenedor.deleteById(id);
         if(delete_resp){
             response = await contenedor.getAll();
         } else {

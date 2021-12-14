@@ -8,7 +8,7 @@ module.exports = class Contenedor{
 
             console.log(`Reading '${path}'...`);
             let content = fs.readFileSync(path, 'utf-8');
-            console.log(`Content:\n'''\n${content}\n'''`);
+            //console.log(`Content:\n'''\n${content}\n'''`);
 
             this.id = (content == '') ? 0 : JSON.parse(content).length;
             
@@ -129,7 +129,6 @@ module.exports = class Contenedor{
             
             return this.id;
         } catch(error) {
-            console.log(error)
             throw(`The following error has ocurred while modifying ${this.name}:\n${error}`);
         }
     }
