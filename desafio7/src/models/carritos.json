@@ -1,0 +1,43 @@
+[
+   {
+      "id": 1,
+      "timestamp": "2021-12-14T23:26:25.356Z",
+      "productos": [
+         {
+            "nombre": "RemeraS",
+            "descripcion": "Remera de algodon XXL",
+            "codigo": 21312421,
+            "foto": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
+            "precio": 2100,
+            "stock": "1",
+            "id": 1,
+            "timestamp": "2021-12-14T22:26:50.171Z"
+         },
+         {
+            "nombre": "RemeraS",
+            "descripcion": "Remera de algodon XXL",
+            "codigo": 21312421,
+            "foto": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
+            "precio": 2100,
+            "stock": "1",
+            "id": 1,
+            "timestamp": "2021-12-14T22:26:50.171Z"
+         }
+      ]
+   },
+   {
+      "id": 2,
+      "timestamp": "2021-12-14T23:26:34.649Z",
+      "productos": []
+   },
+   {
+      "id": 3,
+      "timestamp": "2021-12-14T23:26:36.801Z",
+      "productos": []
+   },
+   {
+      "id": 4,
+      "timestamp": "2021-12-14T23:26:37.546Z",
+      "productos": []
+   }
+]

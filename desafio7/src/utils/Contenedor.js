@@ -2,9 +2,10 @@ const fs = require('fs');
 
 
 module.exports = class Contenedor{
-    constructor(path = './productos.txt'){
+    constructor(path = './productos.txt', type){
         this.name = path;
         this.id = 0;
+        this.type = type;
 
         try {
 
@@ -39,6 +40,10 @@ module.exports = class Contenedor{
         producto.id = this.id;
         producto.timestamp = new Date().toISOString();
 
+        if(this.type == 'carrito'){
+            producto.productos = [];
+        }
+
         try {
             let content = await fs.promises.readFile(this.name, 'utf-8');
             content = content != '' ? JSON.parse(content) : [];
@@ -69,6 +74,11 @@ module.exports = class Contenedor{
                     Object.keys(newProduct).forEach(key => {
                         if(key in producto){
                             producto[key] = newProduct[key];
+                        } else {
+                            // Hardcodeado a morir...
+                            if(key == 'new_prod'){
+                                producto['productos'].push(newProduct.new_prod);
+                            }
                         }
                     });
                 }
