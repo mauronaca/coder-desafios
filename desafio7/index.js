@@ -2,6 +2,8 @@ let express = require('express');
 let path = require('path');
 const { urlencoded } = require('express');
 let router_productos = require('./src/routes/router_productos.js');
+let router_carrito = require('./src/routes/router_carrito.js');
+require('dotenv').config()
 
 const PORT = process.env.PORT || 3000;
 
@@ -19,7 +21,7 @@ app.set('view engine', 'ejs');
 
 
 app.use('/api/productos', router_productos);
-//app.use('/api/carrito', router_carrito);
+app.use('/api/carrito', router_carrito);
 app.use('/', (req, res, next) => {
     res.redirect('/api/productos');
 });

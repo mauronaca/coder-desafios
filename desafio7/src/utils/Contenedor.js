@@ -80,12 +80,12 @@ module.exports = class Contenedor{
     async getById(id){
 
         if(id > this.id || id <= 0){
-            throw(`The requested id = ${id} is not valid`);
+            return 0;
         }
 
         try{
             let content = await fs.promises.readFile(this.name, 'utf-8');
-            return(JSON.parse(content)[id - 1]);
+            return content != '' ? JSON.parse(content)[id - 1] : {};
 
         } catch(error) {
 
@@ -97,7 +97,7 @@ module.exports = class Contenedor{
     async getAll(){
         try {
             let content = await fs.promises.readFile(this.name, 'utf-8');
-            return JSON.parse(content);
+            return content != '' ? JSON.parse(content) : [];
         } catch(error) {
             throw(`The following error has ocurred while reading ${this.name}:\n${error}`);
         }
@@ -106,7 +106,8 @@ module.exports = class Contenedor{
 
     async deleteById(id){
         if(id > this.id || id <= 0){
-            throw(`The requested id = ${id} is not valid`);
+            //throw(`The requested id = ${id} is not valid`);
+            return 0;
         }
 
         try {
@@ -126,8 +127,9 @@ module.exports = class Contenedor{
             this.id--;
             await fs.promises.writeFile(this.name, JSON.stringify(content, null, 3));
             
-            return;
+            return this.id;
         } catch(error) {
+            console.log(error)
             throw(`The following error has ocurred while modifying ${this.name}:\n${error}`);
         }
     }

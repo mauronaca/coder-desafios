@@ -13,44 +13,70 @@ let router_productos = new Router;
 router_productos.use(express.json());
 router_productos.use(urlencoded({extended : true}));
 
-router_productos.get('/', (req, res, next) => {
-    res.json(productos.getAll());
-});
+router_productos.get('/', async (req, res, next) => {
+    let response = null;
 
-router_productos.get('/:id', (req, res, next) => {
-    let item = productos.getId(req.params.id);
-    if(item){
-        res.json(item);
-    } else {
-        res.json({error : "Invalid ID"});
+    try{
+        response = await contenedor.getAll();
+    } catch(error) {
+        response = error;
     }
+    res.json(response);
 });
 
-router_productos.post('/', (req, res, next) => {
+router_productos.get('/:id', async (req, res, next) => {
+    let response = {};
+    let itemID = req.params.id;
+
+    try{
+        let item = await contenedor.getById(itemID);
+            
+        if(item){
+            response = item;
+            
+        } else {
+            response = {error : "Invalid ID"};
+            
+        }
+    } catch(error){
+        response = {error : "Error"};
+    }
+
+    res.json(response);
+
+});
+
+router_productos.post('/', async (req, res, next) => {
     let producto = (Object.keys(req.query).length === 0) ? req.body : req.query;
+
+    let response = {};
+
     console.log(producto);
 
     if(!producto.hasOwnProperty('title')
     || !producto.hasOwnProperty('price')
     || !producto.hasOwnProperty('thumbnail')){
-        res.status(404)
-        res.json({error : "Faltan ingresar parametros"});
+        response = {error : "Faltan ingresar parametros"};
+
     } else {
-        let id = productos.save({
+
+        let item2bsaved = {
             title : producto.title,
             price : producto.price,
             thumbnail: producto.thumbnail
-        });
-    
-        if(id){
-            res.status(200);
-            res.redirect('/');
-        } else {
-            res.status(404);
-            res.json({error : "An error has ocurred while saving a new product"});
+        };
+
+        try{
+            let save_resp = await contenedor.save(item2bsaved);
+            response = await contenedor.getAll();
+            //console.log(save_resp)
+        } catch(error) {
+            response = {error : "An error has ocurred while saving a new product"};
         }
+        
     }
     
+    res.json(response);
 }); 
 
 router_productos.put('/:id', (req, res, next) => {
@@ -71,16 +97,22 @@ router_productos.put('/:id', (req, res, next) => {
     }
 });
 
-router_productos.delete('/:id', (req, res, next) => {
+router_productos.delete('/:id', async (req, res, next) => {
     let id = req.params.id;
-
-    let aux = productos.delete(id);
-    if(!aux){
-        res.json({error : "An error has ocurred while deleting"});
-    } else {
-        res.json({
-            'updated-products' : aux
-        })
+    let response = {};
+    
+    try{
+        let delete_resp = await contenedor.delete(id);
+        if(delete_resp){
+            response = await contenedor.getAll();
+        } else {
+            response = {error: "Invalid ID"}
+        }
+    } catch(error) { 
+        response = {error : error};
     }
+
+    res.json(response);
 });
+
 module.exports = router_productos;
