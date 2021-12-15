@@ -39,7 +39,7 @@ Puerto 8080 para desarrollo y puerto 3030 definido por ``process.env.PORT``en Gl
  
   Esta ruta recibe al id del producto como un parametro que debe llamarse ``id_prod``. El formato de la ruta será: ``/api/carrito/ID_CARRITO/productos?id_prod=ID_PROD``. Si ``id_prod`` no se especifica se enviará un error.
  
-Un ejemplo de uso: ``http://localhost:8080/api/carrito/2/productos?id_prod=1``
+  Un ejemplo de uso: ``http://localhost:8080/api/carrito/2/productos?id_prod=1``
 
 - POST ``/``: Genera un carrito nuevo vacío con la siguiente estructura:
 
