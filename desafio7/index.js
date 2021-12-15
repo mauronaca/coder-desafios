@@ -5,7 +5,7 @@ let router_productos = require('./src/routes/router_productos.js');
 let router_carrito = require('./src/routes/router_carrito.js');
 require('dotenv').config()
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 let app = express();
 global.admin = true;

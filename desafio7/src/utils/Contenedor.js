@@ -133,24 +133,32 @@ module.exports = class Contenedor{
             let idxDel = -1;
             content = JSON.parse(content);
 
+
             if(id_prod != -1){
                 
+            console.log(content[id-1])
+            console.log(`id_prod: ${id_prod}`)
+            console.log(`this id: ${this.id}`)
                 // Usar un idx para el carrito y otro para el producto
 
-                content.forEach(carrito => {
+                let carrito = content[id - 1];
+
+                content.map((carrito, idx_carr) => {
                     if(carrito.id == id){
-                        carrito.productos.map((producto, idx) => {
+                        carrito['productos'].map((producto, idx) => {
                             if(producto.id == id_prod){
                                 idxDel = idx;
+                                console.log(producto)
                             }
                         });
-                        if(idxDel >= 0){
-                            carrito['productos'].splice(idxDel, 1);
-                        }
                     }
-                });
+                }, content);
                 
-                await fs.promises.writeFile(this.name, JSON.stringify(content, null, 3));
+                if(idxDel != -1){
+                    content[id - 1].productos.splice(idxDel, 1);
+                    await fs.promises.writeFile(this.name, JSON.stringify(content, null, 3));
+                }
+
 
             } else {
                 content.map((item, idx) => {
@@ -164,9 +172,10 @@ module.exports = class Contenedor{
                 if(idxDel >= 0){
                     content.splice(idxDel, 1);
                 }
+                this.id--;
+                await fs.promises.writeFile(this.name, JSON.stringify(content, null, 3));
+
             }
-            this.id--;
-            await fs.promises.writeFile(this.name, JSON.stringify(content, null, 3));
             
             return this.id;
         } catch(error) {

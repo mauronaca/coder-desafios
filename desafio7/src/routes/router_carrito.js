@@ -114,7 +114,6 @@ router.delete('/:id/productos', async (req, res, next) => {
     let id_prod =  (Object.keys(req.query).length === 0) ? req.body : req.query;
 
     let response = {};
-console.log(id_prod)
 
     try {
         await carritos.deleteById(id_carrito, id_prod.id_prod);
