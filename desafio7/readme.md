@@ -3,6 +3,12 @@ Puerto 8080 para desarrollo y puerto 3030 definido por ``process.env.PORT``en Gl
 
 ---
 
+## Usuario
+
+La variable global ``àdmin`` puede ser ``true`` (defecto) o ``false``. Se puede modificar a traves de la ruta POST ``/api/login``, la cual recibe como parametro query ``ùser`` y si su valor es ``admin``, la variable cambia a estado ``true``.
+
+---
+
 ## Rutas de ``/api/productos``
 
 - GET ``/``: Muestra todos los productos disponibles.
