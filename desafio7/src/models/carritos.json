@@ -1,7 +1,21 @@
 [
    {
+      "productos": [
+         {
+            "nombre": "Remera De cara y choya",
+            "descripcion": "Remera de algodon XXL",
+            "codigo": 21312421,
+            "foto": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
+            "precio": 2100,
+            "stock": 98,
+            "id": 3,
+            "timestamp": "2021-12-15T02:15:22.455Z"
+         }
+      ],
       "id": 1,
-      "timestamp": "2021-12-14T23:26:25.356Z",
+      "timestamp": "2021-12-15T02:21:08.227Z"
+   },
+   {
       "productos": [
          {
             "nombre": "RemeraS",
@@ -23,21 +37,28 @@
             "id": 1,
             "timestamp": "2021-12-14T22:26:50.171Z"
          }
-      ]
-   },
-   {
+      ],
       "id": 2,
-      "timestamp": "2021-12-14T23:26:34.649Z",
-      "productos": []
+      "timestamp": "2021-12-15T02:21:10.645Z"
    },
    {
+      "productos": [],
       "id": 3,
-      "timestamp": "2021-12-14T23:26:36.801Z",
-      "productos": []
+      "timestamp": "2021-12-15T02:21:12.540Z"
    },
    {
+      "productos": [],
       "id": 4,
-      "timestamp": "2021-12-14T23:26:37.546Z",
-      "productos": []
+      "timestamp": "2021-12-15T02:21:13.497Z"
+   },
+   {
+      "productos": [],
+      "id": 5,
+      "timestamp": "2021-12-15T02:21:14.184Z"
+   },
+   {
+      "productos": [],
+      "id": 5,
+      "timestamp": "2021-12-15T02:30:58.302Z"
    }
 ]

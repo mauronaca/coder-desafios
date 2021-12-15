@@ -10,63 +10,23 @@
       "timestamp": "2021-12-14T22:26:50.171Z"
    },
    {
-      "nombre": "Remera XXL",
+      "nombre": "Remera De Mierda",
       "descripcion": "Remera de algodon XXL",
       "codigo": 21312421,
       "foto": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
       "precio": 2100,
       "stock": 98,
       "id": 2,
-      "timestamp": "2021-12-14T22:26:58.234Z"
+      "timestamp": "2021-12-15T02:11:23.201Z"
    },
    {
-      "nombre": "Remera XXL",
+      "nombre": "Remera De cara y choya",
       "descripcion": "Remera de algodon XXL",
       "codigo": 21312421,
       "foto": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
       "precio": 2100,
       "stock": 98,
       "id": 3,
-      "timestamp": "2021-12-14T22:37:05.490Z"
-   },
-   {
-      "nombre": "Remera XXL",
-      "descripcion": "Remera de algodon XXL",
-      "codigo": 21312421,
-      "foto": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "precio": 2100,
-      "stock": 98,
-      "id": 4,
-      "timestamp": "2021-12-14T23:25:48.537Z"
-   },
-   {
-      "nombre": "Remera XXL",
-      "descripcion": "Remera de algodon XXL",
-      "codigo": 21312421,
-      "foto": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "precio": 2100,
-      "stock": 98,
-      "id": 5,
-      "timestamp": "2021-12-14T23:25:50.267Z"
-   },
-   {
-      "nombre": "Remera XXL",
-      "descripcion": "Remera de algodon XXL",
-      "codigo": 21312421,
-      "foto": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "precio": 2100,
-      "stock": 98,
-      "id": 6,
-      "timestamp": "2021-12-14T23:25:53.023Z"
-   },
-   {
-      "nombre": "Remera XXL",
-      "descripcion": "Remera de algodon XXL",
-      "codigo": 21312421,
-      "foto": "https://cdn-prod.scalefast.com/public/assets/user/2072312/image/01091d2380ca732c08f763d9ec82fd9d.jpg",
-      "precio": 2100,
-      "stock": 98,
-      "id": 7,
-      "timestamp": "2021-12-14T23:25:53.708Z"
+      "timestamp": "2021-12-15T02:15:22.455Z"
    }
 ]

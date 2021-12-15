@@ -16,7 +16,7 @@ module.exports = class Contenedor{
             this.id = (content == '') ? 0 : JSON.parse(content).length;
             
         } catch(error) {
-
+            
             if(error.code === 'ENOENT' ){
                 console.log(`No such file found\nCreating '${path}'...`);   
                 let content = [];
@@ -36,10 +36,6 @@ module.exports = class Contenedor{
     }
 
     async save(producto){
-        this.id++;
-        producto.id = this.id;
-        producto.timestamp = new Date().toISOString();
-
         if(this.type == 'carrito'){
             producto.productos = [];
         }
@@ -47,6 +43,12 @@ module.exports = class Contenedor{
         try {
             let content = await fs.promises.readFile(this.name, 'utf-8');
             content = content != '' ? JSON.parse(content) : [];
+
+                
+            this.id++;
+            producto.id = this.id;
+            producto.timestamp = new Date().toISOString();
+
 
             content.push(producto);
 
@@ -119,9 +121,10 @@ module.exports = class Contenedor{
         
     }
 
-    async deleteById(id){
+    // id_prod es solo para cuando el contenedor es de tipo carrito.
+    async deleteById(id, id_prod = -1){
         if(id > this.id || id <= 0){
-            throw(`The requested id = ${id} is not valid`);
+            throw(`The requested id = ${id} is not valid.`);
             //return 0;
         }
 
@@ -130,15 +133,38 @@ module.exports = class Contenedor{
             let idxDel = -1;
             content = JSON.parse(content);
 
-            content.map((producto, idx) => {
-                if(producto.id == id){
-                    idxDel = idx;
-                } else {
-                    producto.id = producto.id > id? producto.id - 1 : producto.id;
-                }
+            if(id_prod != -1){
                 
-            }, content)
-            content.splice(idxDel, 1);
+                // Usar un idx para el carrito y otro para el producto
+
+                content.forEach(carrito => {
+                    if(carrito.id == id){
+                        carrito.productos.map((producto, idx) => {
+                            if(producto.id == id_prod){
+                                idxDel = idx;
+                            }
+                        });
+                        if(idxDel >= 0){
+                            carrito['productos'].splice(idxDel, 1);
+                        }
+                    }
+                });
+                
+                await fs.promises.writeFile(this.name, JSON.stringify(content, null, 3));
+
+            } else {
+                content.map((item, idx) => {
+                    if(item.id == id){
+                        idxDel = idx;
+                    } else {
+                        item.id = item.id > id? item.id - 1 : item.id;
+                    }
+                    
+                }, content)
+                if(idxDel >= 0){
+                    content.splice(idxDel, 1);
+                }
+            }
             this.id--;
             await fs.promises.writeFile(this.name, JSON.stringify(content, null, 3));
             
