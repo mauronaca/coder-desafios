@@ -37,7 +37,7 @@ Puerto 8080 para desarrollo y puerto 3030 definido por ``process.env.PORT``en Gl
 - GET ``/``: Devuelve todos los carritos existentes.
 - GET ``/:id_carrito/productos``: Devuelve el producto especificado por su id del carrito con ``id_carrito``.
  
-Esta ruta recibe al id del producto como un parametro que debe llamarse ``id_prod``. El formato de la ruta será: ``/api/carrito/ID_CARRITO/productos?id_prod=ID_PROD``. Si ``id_prod`` no se especifica se enviará un error.
+  Esta ruta recibe al id del producto como un parametro que debe llamarse ``id_prod``. El formato de la ruta será: ``/api/carrito/ID_CARRITO/productos?id_prod=ID_PROD``. Si ``id_prod`` no se especifica se enviará un error.
  
 Un ejemplo de uso: ``http://localhost:8080/api/carrito/2/productos?id_prod=1``
 
