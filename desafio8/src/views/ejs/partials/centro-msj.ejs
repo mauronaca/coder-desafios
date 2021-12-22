@@ -1,0 +1,108 @@
+<div class="d-flex align-items-center flex-column">
+
+    <h2 style="color:red; margin-top: 20px;">Centro de mensajería</h2>
+
+
+    <div id="container-chat">
+
+        <div>
+            <form id="data_user">
+                <div>
+                    <input id="email_user" type="text" placeholder="Ingresa tu correo">
+                    <input style="background-color: #4CAF50; /* Green */
+                            border: none;
+                            color: white;
+                            padding: 15px 32px;
+                            text-align: center;
+                            text-decoration: none;
+                            display: inline-block;
+                            font-size: 16px;
+                            cursor: pointer;
+                        " type="submit" value="Ingresar al chat">
+                </div>
+            </form>
+        </div>
+
+        <div>
+            Bienvenido al chat de clientes!
+            <div id="mensajes">
+
+            </div>
+
+            <input type="text" id="input-text" placeholder="Mensaje a enviar">
+            <button id="send-mensaje">Enviar</button>
+        </div>
+
+
+    </div>
+
+
+    <script>
+
+        let user = null;
+        let form_user = document.getElementById('data_user');
+        let container_chat = document.getElementById('container-chat');
+        let texto = document.getElementById('mensajes');
+        let send_btn = document.getElementById('send-mensaje');
+        let mensaje = document.getElementById('input-text')
+
+        form_user.addEventListener("submit", e => {
+            e.preventDefault();
+            user = {
+                email: e.target[0].value
+            }
+            if (user.email != "") {
+                container_chat.classList = "active";
+
+                // Cargo chat
+                socket.emit("new_user", user);
+                loadChat();
+
+                // pulleo mensajes del servidor
+                readSocket();
+            }
+        });
+
+
+        function renderChat(data) {
+            let inner = ``;
+
+            data.forEach(element => {
+                inner += `
+                    <div style="display:inline;">
+                        <p style="font-weight:bold; display:inline; color:blue; padding:0px; margin:0px 0px;">${element.mail} </p>
+                        <p style="font-weight:bold; display:inline; color:brown; padding:0px; margin:0px 0px;">[${element.hora}]: </p>
+                        <p style="display:inline; color:green; padding:0px; margin:0px 0px;">${element.mensaje}</p>
+                    </div> </br>
+                `;
+            });
+            texto.innerHTML = inner;
+        }
+
+        
+        function readSocket() {
+            socket.on('listenserver-mensajes', data => {
+                renderChat(data);
+            });
+        }
+
+        function loadChat() {
+            socket.on('listen_mensajes', data => {
+                renderChat(data);
+            });
+        }
+
+
+        send_btn.addEventListener('click', e => {
+            let send_msg = {
+                hora: 'UTC',
+                mail: user.email,
+                mensaje: mensaje.value
+            };
+            console.log(send_msg);
+            socket.emit('mensaje', send_msg);
+        });
+
+    </script>
+
+</div>

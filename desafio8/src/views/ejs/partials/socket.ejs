@@ -1,0 +1,54 @@
+<script>
+
+    let socket = io(); // Conexion socket
+
+    let button = document.getElementById('send-socket');
+    let listar = document.getElementById('listar-productos');
+    let title = document.getElementById('send-title');
+    let price = document.getElementById('send-price');
+    let thumbnail = document.getElementById('send-thumbnail');
+
+    
+    socket.emit('producto', '');
+
+    // Agregar producto
+    button.addEventListener("click", e => {
+        console.log('creando item desde cliente...')
+        let send_message = {
+            title: title.value,
+            price: price.value,
+            thumbnail: thumbnail.value
+        };
+        // activa al evento listenserver tmbien
+        socket.emit('new_producto', send_message);
+    });
+
+
+    // Pullear al servidor, recibir productos y armar la tabla.
+    socket.on('listenserver', data => {
+        console.log("Recibiendo..", data);
+
+        let inner = ``;
+        $("#tabla-productos tr:not(:first)").remove();
+
+        data.forEach(producto => {
+            inner = `                    
+                    <tr>
+                        <td>
+                            ${producto.title}
+                        </td>
+                        <td>
+                            ${producto.price}
+                        </td>
+                        <td>
+                            <div class = "text-center">
+                                <img style="width: 50%; height: 50%;" src= "${producto.thumbnail}" class="img-thumbnail" alt="Responsive image">
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            $('#tabla-productos tbody').append(inner);
+        });
+    });
+
+</script>
