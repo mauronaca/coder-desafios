@@ -57,3 +57,23 @@ print(`--------------------------------------\nTercer producto mas barato`);
 query = db.productos.find({}).sort({"precio" : 1}).limit(3)[2].nombre;
 printjson(query);
 
+
+// Modificar stock a 100
+db.productos.update(
+    {},
+    {
+        $set : {
+            "stock" : 100
+        }
+    }
+);
+
+// Modificar stock a 100
+db.productos.update(
+    {},
+    {
+        $set : {
+            "stock" : 100
+        }
+    }
+);
